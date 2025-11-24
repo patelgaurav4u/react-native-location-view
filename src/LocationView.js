@@ -136,6 +136,7 @@ export default class LocationView extends React.Component {
       <View style={styles.container}>
         <MapView
           ref={mapView => (this._map = mapView)}
+          provider='google'
           style={styles.mapView}
           region={this.state.region}
           showsMyLocationButton={true}
@@ -143,6 +144,9 @@ export default class LocationView extends React.Component {
           onPress={({ nativeEvent }) => this._setRegion(nativeEvent.coordinate)}
           onRegionChange={this._onMapRegionChange}
           onRegionChangeComplete={this._onMapRegionChangeComplete}
+          showsBuildings={true}        // <- show 3D buildings where available
+          showsIndoors={true}  
+          loadingEnabled={true}
         />
         <Entypo
           name={'location-pin'}
